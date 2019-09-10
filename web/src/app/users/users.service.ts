@@ -21,6 +21,9 @@ export class UsersService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
 
-    return Promise.resolve();
+    return this.http.post('http://localhost:8080/api/users', {
+      email,
+      name,
+    }, httpOptions).toPromise();
   }
 }

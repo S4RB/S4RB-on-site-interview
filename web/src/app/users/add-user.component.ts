@@ -11,11 +11,12 @@ export class AddUserComponent implements OnInit {
   private name: string;
   private email: string;
 
-  constructor(private usersService: UsersService) {}
+  constructor(private router: Router, private usersService: UsersService) {}
 
   ngOnInit() {}
 
-  save() {
-    console.log({ name: this.name, email: this.email });
+  async save() {
+    await this.usersService.add(this.name, this.email);
+    await this.router.navigate(['/users']);
   }
 }
